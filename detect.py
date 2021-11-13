@@ -156,13 +156,13 @@ def main(img):
     h,w,c = img.shape#hが縦(短い),wが横(長い)
     """色と位置を見つける"""
     pos_red = detect_red_color(img)#赤色のブロックを探す
-    print("Red_Coordinate:",pos_red)
+    # print("Red_Coordinate:",pos_red)
     pos_blue = detect_blue_color(img)#青色のブロックを探す
-    print("Blue_Coordinate:",pos_blue)
+    # print("Blue_Coordinate:",pos_blue)
     pos_yellow = detect_yellow_color(img)#黄色のブロックを探す
-    print("Yellow_Coordinate:",pos_yellow)
+    # print("Yellow_Coordinate:",pos_yellow)
     pos_green = detect_green_color(img)
-    print("Green_Coordinate:",pos_green)
+    # print("Green_Coordinate:",pos_green)
     #pos_value = detect_value(img)#明度と彩度から色付きのブロックの位置がわかる
     #print("Value_Coordinate:",pos_value)
 
@@ -221,12 +221,12 @@ def run_detect(img, device=0):
     #plt.show()#トリミングが綺麗にできているか確認用
     #色付きブロックを探す旅
     color_and_pos = main(revised_img)
-    print("matplolib座標:",color_and_pos)
+    # print("matplolib座標:",color_and_pos)
     out = []
     #unityの座標に変換する
     for i in range(len(color_and_pos)):
         res = to_unity_coordinate(x,y,color_and_pos[i],device)
-        print([color_and_pos[i][0],res[0],res[1]])#この結果をunityに返す
+        # print([color_and_pos[i][0],res[0],res[1]])#この結果をunityに返す
         out.append([color_and_pos[i][0],res[0],res[1]])
     return out
 

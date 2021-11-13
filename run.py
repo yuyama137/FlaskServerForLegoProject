@@ -13,7 +13,6 @@ app = Flask(__name__) #appという名前のFlaskクラスのインスタンス�
 
 @app.route("/", methods=["POST", "GET"]) #ルーティング(URLの設定）
 def hello(): #"/hello"のURLで呼び出される関数
-    print("aac")
     #print(request)
     R = request.get_json(force=True)
     print(type(R))
@@ -31,7 +30,7 @@ def hello(): #"/hello"のURLで呼び出される関数
 
     # time.sleep(4);
     print("end python")
-    cv2.imwrite(f"capture\\device{R['device']}_{time.time()}.png", image_np_bgr)
+    # cv2.imwrite(f"capture\\device{R['device']}_{time.time()}.png", image_np_bgr)
 
     out_data = run_detect(image_np_bgr, R["device"])
 
@@ -43,6 +42,8 @@ def hello(): #"/hello"のURLで呼び出される関数
     # res["x"] = np.random.randint(0,20,length).tolist()
     # res["z"] = np.random.randint(0,20,length).tolist()
     res["device"] = R["device"]
+
+    print(f"length of device {R['device']} is {len(res['x'])}")
     
     # # debug
     # res["x"] = [float(4193)]
